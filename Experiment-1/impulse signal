@@ -1,0 +1,13 @@
+clc;
+clf;
+close all;
+clear all;
+n1 = input("Starting point of the signal: ");
+n2 = input("End point of the signal: ");
+sam_points = -n1:1:n2;
+amp = [zeros(1,n1) 1 zeros(1,n2)];
+stem(sam_points, amp);
+grid on;
+xlabel('Samples');
+ylabel('Amplitude');
+title("Impulse Signal");
