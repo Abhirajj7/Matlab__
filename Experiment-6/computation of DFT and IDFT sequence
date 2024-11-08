@@ -1,0 +1,39 @@
+clc;
+clf;
+close all;
+clear all;
+x = input("Enter x values: ");
+N = length(x);
+X = zeros(1, N);
+disp("DFT");
+
+% DFT computation begins
+for k = 1 : N
+    sum_k = 0; % Initialize sum for each frequency component k
+    for n = 1 : N
+        % Calculate the product of x(n) and the exponential for the current n and k
+        sum_k = sum_k + x(n) * exp((-1i * 2 * pi * (n-1) * (k-1)) / N);
+    end
+    X(k) = sum_k; % Store the DFT result for the k-th frequency
+end
+
+disp(X);
+disp("Verification");
+y = fft(x, N);
+disp(y);
+disp("IDFT");
+x_inv = zeros(1, N);
+
+% IDFT computation begins
+for n = 1 : N
+    sum_n = 0; % Initialize sum for each time component n
+    for k = 1 : N
+        % Calculate the inverse DFT, dividing by N to scale the result
+        sum_n = sum_n + (X(k) * exp((1i * 2 * pi * (n-1) * (k-1)) / N)) / N;
+    end
+    x_inv(n) = sum_n; % Store the IDFT result for the n-th time point
+end
+disp(x_inv);
+disp("Verification");
+y_inv = ifft(X, N);
+disp(y_inv);
