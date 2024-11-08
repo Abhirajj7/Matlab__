@@ -1,0 +1,12 @@
+clc;
+clf;
+close all;
+clear all;
+n1 = input("Starting point of the signal: ");
+sam_points = -n1:1:n1;
+amp = [zeros(1,n1) ones(1,n1+1)];
+stem(sam_points, amp);
+grid on;
+xlabel('Samples');
+ylabel('Amplitude');
+title('Unit Step Signal');
