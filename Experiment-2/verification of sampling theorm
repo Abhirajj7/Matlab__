@@ -1,0 +1,105 @@
+#Sin Wave Sampling
+clc;
+clf;
+close all; 
+clear all;
+
+am=input("Enter amplitude: ");
+fm = input('Enter frequency: ');      
+cyc = input('Enter no. cycles: ');    
+t = 0:(1/(fm*fm)):cyc/fm;             % High resolution time vector for continuous sine wave
+amplitude = am*sin(2*pi*fm*t);        % Generate the sine wave
+
+fs_1 = 1.5 * fm;                      % Sampling frequency 1 (low)
+fs_2 = 3 * fm;                        % Sampling frequency 2 (higher)
+fs_3 = 20 * fm;                       % Sampling frequency 3 (very high)
+
+t_1 = 0:(1/(fs_1)):cyc/fm;            % Time vector for fs_1
+t_2 = 0:(1/(fs_2)):cyc/fm;            % Time vector for fs_2
+t_3 = 0:(1/(fs_3)):cyc/fm;            % Time vector for fs_3
+
+amp_1 = am*sin(2*pi*fm*t_1);             
+amp_2 = am*sin(2*pi*fm*t_2);             
+amp_3 = am*sin(2*pi*fm*t_3);             
+
+subplot(221);                         %Sine wave
+plot(t, amplitude);              
+title('Sine Wave');
+xlabel('Time (s)');
+ylabel('Amplitude');
+grid on;
+
+subplot(222);                         %Under sampling
+plot(t_1, amp_1);             
+title('Under Sampled');
+xlabel('Time (s)');
+ylabel('Amplitude');
+grid on;
+
+subplot(223);                         %Nyquist Sampling
+plot(t_2, amp_2);                           
+title('Nyquist Sampling');
+xlabel('Time (s)');
+ylabel('Amplitude');
+grid on;
+
+subplot(224);                        %Over sampling
+plot(t_3,amp_3);                           
+title('Over Sampling');
+xlabel('Time (s)');
+ylabel('Amplitude');
+grid on;
+
+
+
+#Cos Wave Sampling
+clc; 
+clf;
+close all; 
+clear all;
+
+am=input("Enter amplitude: ");
+fm = input('Enter frequency: ');      
+cyc = input('Enter no. cycles: ');    
+t = 0:(1/(fm*fm)):cyc/fm;             % High resolution time vector for continuous sine wave
+amplitude = am*cos(2*pi*fm*t);        % Generate the sine wave
+
+fs_1 = 1.5 * fm;                      % Sampling frequency 1 (low)
+fs_2 = 3 * fm;                        % Sampling frequency 2 (higher)
+fs_3 = 20 * fm;                       % Sampling frequency 3 (very high)
+
+t_1 = 0:(1/(fs_1)):cyc/fm;            % Time vector for fs_1
+t_2 = 0:(1/(fs_2)):cyc/fm;            % Time vector for fs_2
+t_3 = 0:(1/(fs_3)):cyc/fm;            % Time vector for fs_3
+
+amp_1 = am*cos(2*pi*fm*t_1);             
+amp_2 = am*cos(2*pi*fm*t_2);             
+amp_3 = am*cos(2*pi*fm*t_3);             
+
+subplot(221);                         %Cos wave
+plot(t, amplitude);              
+title('Sine Wave');
+xlabel('Time (s)');
+ylabel('Amplitude');
+grid on;
+
+subplot(222);                         %Under sampling
+plot(t_1, amp_1);             
+title('Under Sampled');
+xlabel('Time (s)');
+ylabel('Amplitude');
+grid on;
+
+subplot(223);                         %Nyquist Sampling
+plot(t_2, amp_2);                           
+title('Nyquist Sampling');
+xlabel('Time (s)');
+ylabel('Amplitude');
+grid on;
+
+subplot(224);                        %Over sampling
+plot(t_3,amp_3);                           
+title('Over Sampling');
+xlabel('Time (s)');
+ylabel('Amplitude');
+grid on;
